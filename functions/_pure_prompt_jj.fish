@@ -23,7 +23,7 @@ function _pure_prompt_jj \
 
     test -z "$status_info"; and return 1
 
-    set --local nearest_bookmark (command jj log --no-graph --ignore-working-copy -r 'heads(::@ & bookmarks())' -T 'bookmarks.map(|b| b.name()).join(", ")' 2>/dev/null)
+    set --local nearest_bookmark (command jj log --no-graph --ignore-working-copy -r 'heads(::@ & bookmarks())' -T 'bookmarks.filter(|b| !b.remote()).map(|b| b.name()).join(", ")' 2>/dev/null)
     set --local pure_gray (_pure_set_color 93a1a1)
 
     if test -n "$nearest_bookmark"
