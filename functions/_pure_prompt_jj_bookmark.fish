@@ -13,10 +13,10 @@ function _pure_prompt_jj_bookmark \
         set --local jj_bookmark_color (_pure_set_color $pure_color_jj_bookmark)
         set jj_bookmark "$jj_bookmark_color($display_name)"(set_color normal)
 
-        # Ahead: changes in @ not yet in the bookmark
+        # Ahead: non-empty changes in @ not yet in the bookmark
         set --local bookmark_name $bookmark_names[1]
         set --local ahead_revs (command jj log --no-graph --ignore-working-copy \
-            -r "$bookmark_name..@" -T '".\n"' 2>/dev/null)
+            -r "($bookmark_name..@) ~ empty()" -T '".\n"' 2>/dev/null)
         set --local ahead_count (count $ahead_revs)
 
         if test "$ahead_count" -gt 0

@@ -105,6 +105,28 @@ before_each
 after_each
 
 before_each
+@test "_pure_prompt_jj_bookmark: excludes empty changes from ahead count" (
+    printf '%s\n' \
+        '#!/bin/sh' \
+        'case "$*" in' \
+        '    *bookmarks*\\n*)' \
+        '        echo "main"' \
+        '        ;;' \
+        '    *empty*"main..@"*|*"main..@"*empty*)' \
+        '        ;;' \
+        '    *"@..main@origin"*)' \
+        '        ;;' \
+        'esac' > /tmp/test_pure_prompt_jj_bookmark/bin/jj
+    chmod +x /tmp/test_pure_prompt_jj_bookmark/bin/jj
+
+    set --universal pure_symbol_jj_ahead '^'
+    set --universal pure_show_numbered_jj_indicator false
+
+    _pure_prompt_jj_bookmark
+) = '(main)'(set_color normal)
+after_each
+
+before_each
 @test "_pure_prompt_jj_bookmark: shows numbered ahead count when enabled" (
     printf '%s\n' \
         '#!/bin/sh' \
