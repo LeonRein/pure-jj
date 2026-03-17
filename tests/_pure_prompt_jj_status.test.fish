@@ -33,10 +33,10 @@ before_each
     printf '%s\n' '#!/bin/sh' 'echo "immutable"' > /tmp/test_pure_prompt_jj_status/bin/jj
     chmod +x /tmp/test_pure_prompt_jj_status/bin/jj
 
-    set --universal pure_symbol_jj_immutable "🔒"
+    set --universal pure_symbol_jj_immutable "⊙"
 
     _pure_prompt_jj_status
-) = '🔒 '
+) = '⊙ '
 after_each
 
 before_each
@@ -44,10 +44,10 @@ before_each
     printf '%s\n' '#!/bin/sh' 'echo "hidden"' > /tmp/test_pure_prompt_jj_status/bin/jj
     chmod +x /tmp/test_pure_prompt_jj_status/bin/jj
 
-    set --universal pure_symbol_jj_hidden "👻"
+    set --universal pure_symbol_jj_hidden "⊘"
 
     _pure_prompt_jj_status
-) = '👻 '
+) = '⊘ '
 after_each
 
 before_each
@@ -66,10 +66,10 @@ before_each
     printf '%s\n' '#!/bin/sh' 'echo "conflict"' > /tmp/test_pure_prompt_jj_status/bin/jj
     chmod +x /tmp/test_pure_prompt_jj_status/bin/jj
 
-    set --universal pure_symbol_jj_conflict "💥"
+    set --universal pure_symbol_jj_conflict "✖"
 
     _pure_prompt_jj_status
-) = '💥 '
+) = '✖ '
 after_each
 
 before_each
@@ -77,11 +77,11 @@ before_each
     printf '%s\n' '#!/bin/sh' 'echo "immutable empty"' > /tmp/test_pure_prompt_jj_status/bin/jj
     chmod +x /tmp/test_pure_prompt_jj_status/bin/jj
 
-    set --universal pure_symbol_jj_immutable "🔒"
+    set --universal pure_symbol_jj_immutable "⊙"
     set --universal pure_symbol_jj_empty "∅"
 
     _pure_prompt_jj_status
-) = '🔒 ∅ '
+) = '⊙ ∅ '
 after_each
 
 before_each
@@ -90,9 +90,9 @@ before_each
     chmod +x /tmp/test_pure_prompt_jj_status/bin/jj
 
     _pure_unmock _pure_set_color # enable colors
-    set --universal pure_symbol_jj_immutable "🔒"
+    set --universal pure_symbol_jj_immutable "⊙"
     set --universal pure_color_jj_status brblack
 
     _pure_prompt_jj_status
-) = (set_color brblack)'🔒 '
+) = (set_color brblack)'⊙ '
 after_each

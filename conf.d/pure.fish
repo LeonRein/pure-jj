@@ -37,10 +37,10 @@ _pure_set_default pure_show_numbered_git_indicator false
 
 # Jujutsu (jj)
 _pure_set_default pure_enable_jj true
-_pure_set_default pure_symbol_jj_immutable "🔒"
-_pure_set_default pure_symbol_jj_hidden "👻"
+_pure_set_default pure_symbol_jj_immutable "⊙"
+_pure_set_default pure_symbol_jj_hidden "⊘"
 _pure_set_default pure_symbol_jj_empty "∅"
-_pure_set_default pure_symbol_jj_conflict "💥"
+_pure_set_default pure_symbol_jj_conflict "✖"
 _pure_set_default pure_symbol_jj_dirty "*"
 _pure_set_default pure_color_jj_status pure_color_mute
 _pure_set_default pure_color_jj_bookmark pure_color_mute

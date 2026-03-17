@@ -77,7 +77,7 @@ after_each
 
 before_each
 @test "_pure_prompt_jj: shows status flags with change id" (
-    function _pure_prompt_jj_status; echo "🔒 "; end
+    function _pure_prompt_jj_status; echo "⊙ "; end
     function _pure_prompt_jj_change_id; echo "abcd"; end
     function _pure_prompt_jj_dirty; echo $EMPTY; end
     function _pure_prompt_jj_bookmark; echo $EMPTY; end
@@ -85,7 +85,7 @@ before_each
     set --universal pure_enable_jj true
 
     _pure_prompt_jj
-) = '🔒 abcd'
+) = '⊙ abcd'
 after_each
 
 before_each
@@ -116,7 +116,7 @@ after_each
 
 before_each
 @test "_pure_prompt_jj: shows full prompt with all components" (
-    function _pure_prompt_jj_status; echo "🔒 "; end
+    function _pure_prompt_jj_status; echo "⊙ "; end
     function _pure_prompt_jj_change_id; echo "abcd"; end
     function _pure_prompt_jj_dirty; echo '*'; end
     function _pure_prompt_jj_bookmark; echo '(main)'; end
@@ -124,7 +124,7 @@ before_each
     set --universal pure_enable_jj true
 
     _pure_prompt_jj
-) = '🔒 abcd* (main)'
+) = '⊙ abcd* (main)'
 after_each
 
 before_each
