@@ -24,8 +24,11 @@ before_each
     printf '%s\n' \
         '#!/bin/sh' \
         'case "$*" in' \
-        '    *bookmarks*\\n*)' \
+        '    *local_bookmarks*\\n*)' \
         '        echo "main"' \
+        '        ;;' \
+        '    *tracking_ahead_count*)' \
+        '        printf "0\n0\n"' \
         '        ;;' \
         'esac' > /tmp/test_pure_prompt_jj_bookmark/bin/jj
     chmod +x /tmp/test_pure_prompt_jj_bookmark/bin/jj
@@ -50,8 +53,11 @@ before_each
     printf '%s\n' \
         '#!/bin/sh' \
         'case "$*" in' \
-        '    *bookmarks*\\n*)' \
+        '    *local_bookmarks*\\n*)' \
         '        printf "main\ndevelop\n"' \
+        '        ;;' \
+        '    *tracking_ahead_count*)' \
+        '        printf "0\n0\n"' \
         '        ;;' \
         'esac' > /tmp/test_pure_prompt_jj_bookmark/bin/jj
     chmod +x /tmp/test_pure_prompt_jj_bookmark/bin/jj
@@ -67,8 +73,11 @@ before_each
     printf '%s\n' \
         '#!/bin/sh' \
         'case "$*" in' \
-        '    *bookmarks*\\n*)' \
+        '    *local_bookmarks*\\n*)' \
         '        echo "main"' \
+        '        ;;' \
+        '    *tracking_ahead_count*)' \
+        '        printf "0\n0\n"' \
         '        ;;' \
         'esac' > /tmp/test_pure_prompt_jj_bookmark/bin/jj
     chmod +x /tmp/test_pure_prompt_jj_bookmark/bin/jj
@@ -82,17 +91,15 @@ before_each
 after_each
 
 before_each
-@test "_pure_prompt_jj_bookmark: shows ahead symbol when changes ahead of bookmark" (
+@test "_pure_prompt_jj_bookmark: shows ahead symbol when tracking ahead" (
     printf '%s\n' \
         '#!/bin/sh' \
         'case "$*" in' \
-        '    *bookmarks*\\n*)' \
+        '    *local_bookmarks*\\n*)' \
         '        echo "main"' \
         '        ;;' \
-        '    *"main..@"*)' \
-        '        printf ".\n.\n"' \
-        '        ;;' \
-        '    *"@..main@origin"*)' \
+        '    *tracking_ahead_count*)' \
+        '        printf "2\n0\n"' \
         '        ;;' \
         'esac' > /tmp/test_pure_prompt_jj_bookmark/bin/jj
     chmod +x /tmp/test_pure_prompt_jj_bookmark/bin/jj
@@ -105,39 +112,15 @@ before_each
 after_each
 
 before_each
-@test "_pure_prompt_jj_bookmark: excludes empty changes from ahead count" (
-    printf '%s\n' \
-        '#!/bin/sh' \
-        'case "$*" in' \
-        '    *bookmarks*\\n*)' \
-        '        echo "main"' \
-        '        ;;' \
-        '    *empty*"main..@"*|*"main..@"*empty*)' \
-        '        ;;' \
-        '    *"@..main@origin"*)' \
-        '        ;;' \
-        'esac' > /tmp/test_pure_prompt_jj_bookmark/bin/jj
-    chmod +x /tmp/test_pure_prompt_jj_bookmark/bin/jj
-
-    set --universal pure_symbol_jj_ahead '^'
-    set --universal pure_show_numbered_jj_indicator false
-
-    _pure_prompt_jj_bookmark
-) = '(main)'(set_color normal)
-after_each
-
-before_each
 @test "_pure_prompt_jj_bookmark: shows numbered ahead count when enabled" (
     printf '%s\n' \
         '#!/bin/sh' \
         'case "$*" in' \
-        '    *bookmarks*\\n*)' \
+        '    *local_bookmarks*\\n*)' \
         '        echo "main"' \
         '        ;;' \
-        '    *"main..@"*)' \
-        '        printf ".\n.\n.\n"' \
-        '        ;;' \
-        '    *"@..main@origin"*)' \
+        '    *tracking_ahead_count*)' \
+        '        printf "3\n0\n"' \
         '        ;;' \
         'esac' > /tmp/test_pure_prompt_jj_bookmark/bin/jj
     chmod +x /tmp/test_pure_prompt_jj_bookmark/bin/jj
@@ -154,13 +137,11 @@ before_each
     printf '%s\n' \
         '#!/bin/sh' \
         'case "$*" in' \
-        '    *bookmarks*\\n*)' \
+        '    *local_bookmarks*\\n*)' \
         '        echo "main"' \
         '        ;;' \
-        '    *"main..@"*)' \
-        '        ;;' \
-        '    *"@..main@origin"*)' \
-        '        printf ".\n.\n"' \
+        '    *tracking_ahead_count*)' \
+        '        printf "0\n2\n"' \
         '        ;;' \
         'esac' > /tmp/test_pure_prompt_jj_bookmark/bin/jj
     chmod +x /tmp/test_pure_prompt_jj_bookmark/bin/jj
@@ -177,13 +158,11 @@ before_each
     printf '%s\n' \
         '#!/bin/sh' \
         'case "$*" in' \
-        '    *bookmarks*\\n*)' \
+        '    *local_bookmarks*\\n*)' \
         '        echo "main"' \
         '        ;;' \
-        '    *"main..@"*)' \
-        '        ;;' \
-        '    *"@..main@origin"*)' \
-        '        printf ".\n.\n"' \
+        '    *tracking_ahead_count*)' \
+        '        printf "0\n2\n"' \
         '        ;;' \
         'esac' > /tmp/test_pure_prompt_jj_bookmark/bin/jj
     chmod +x /tmp/test_pure_prompt_jj_bookmark/bin/jj
@@ -200,14 +179,11 @@ before_each
     printf '%s\n' \
         '#!/bin/sh' \
         'case "$*" in' \
-        '    *bookmarks*\\n*)' \
+        '    *local_bookmarks*\\n*)' \
         '        echo "main"' \
         '        ;;' \
-        '    *"main..@"*)' \
-        '        printf ".\n"' \
-        '        ;;' \
-        '    *"@..main@origin"*)' \
-        '        printf ".\n.\n"' \
+        '    *tracking_ahead_count*)' \
+        '        printf "1\n2\n"' \
         '        ;;' \
         'esac' > /tmp/test_pure_prompt_jj_bookmark/bin/jj
     chmod +x /tmp/test_pure_prompt_jj_bookmark/bin/jj
@@ -221,18 +197,14 @@ before_each
 after_each
 
 before_each
-@test "_pure_prompt_jj_bookmark: no remote tracking returns only ahead" (
+@test "_pure_prompt_jj_bookmark: no remote tracking returns only bookmark" (
     printf '%s\n' \
         '#!/bin/sh' \
         'case "$*" in' \
-        '    *bookmarks*\\n*)' \
+        '    *local_bookmarks*\\n*)' \
         '        echo "main"' \
         '        ;;' \
-        '    *"main..@"*)' \
-        '        printf ".\n"' \
-        '        ;;' \
-        '    *"@..main@origin"*)' \
-        '        exit 1' \
+        '    *tracking_ahead_count*)' \
         '        ;;' \
         'esac' > /tmp/test_pure_prompt_jj_bookmark/bin/jj
     chmod +x /tmp/test_pure_prompt_jj_bookmark/bin/jj
@@ -242,7 +214,7 @@ before_each
     set --universal pure_show_numbered_jj_indicator false
 
     _pure_prompt_jj_bookmark
-) = '(main)'(set_color normal)' ^'
+) = '(main)'(set_color normal)
 after_each
 
 before_each
@@ -250,13 +222,11 @@ before_each
     printf '%s\n' \
         '#!/bin/sh' \
         'case "$*" in' \
-        '    *bookmarks*\\n*)' \
+        '    *local_bookmarks*\\n*)' \
         '        echo "main"' \
         '        ;;' \
-        '    *"main..@"*)' \
-        '        printf ".\n"' \
-        '        ;;' \
-        '    *"@..main@origin"*)' \
+        '    *tracking_ahead_count*)' \
+        '        printf "1\n0\n"' \
         '        ;;' \
         'esac' > /tmp/test_pure_prompt_jj_bookmark/bin/jj
     chmod +x /tmp/test_pure_prompt_jj_bookmark/bin/jj

@@ -48,7 +48,7 @@ before_each
 after_each
 
 before_each
-@test "_pure_prompt_jj: ignores directory that is not jj repository" (
+@test "_pure_prompt_jj: returns non-zero when not in jj repository" (
     # Mock jj that fails on 'root'
     printf '%s\n' '#!/bin/sh' 'exit 1' > /tmp/test_pure_prompt_jj/bin/jj
     chmod +x /tmp/test_pure_prompt_jj/bin/jj
@@ -59,7 +59,7 @@ before_each
     function _pure_prompt_jj_bookmark; echo $EMPTY; end
 
     _pure_prompt_jj
-) $status -eq $SUCCESS
+) $status -eq $FAILURE
 after_each
 
 before_each

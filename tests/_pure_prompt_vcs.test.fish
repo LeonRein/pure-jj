@@ -25,10 +25,11 @@ function before_each
         '    exit 0' \
         'fi' \
         'case "$*" in' \
-        '    *bookmarks*\\\\n*)' \
+        '    *local_bookmarks*\\n*)' \
         '        echo "main"' \
         '        ;;' \
-        '    *"main..@"*|*"@..main@origin"*)' \
+        '    *tracking_ahead_count*)' \
+        '        printf "0\\n0\\n"' \
         '        ;;' \
         '    *change_id*)' \
         '        echo "abcd"' \
