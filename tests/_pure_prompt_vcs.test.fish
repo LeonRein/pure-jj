@@ -9,6 +9,7 @@ source (status dirname)/../functions/_pure_prompt_jj_change_id.fish
 source (status dirname)/../functions/_pure_prompt_jj_status.fish
 source (status dirname)/../functions/_pure_prompt_jj_bookmark.fish
 source (status dirname)/../functions/_pure_prompt_jj_dirty.fish
+source (status dirname)/../functions/_pure_prompt_jj_ahead_behind.fish
 source (status dirname)/../functions/_pure_string_width.fish
 
 @echo (_print_filename (status filename))
@@ -25,6 +26,9 @@ function before_each
         '    exit 0' \
         'fi' \
         'case "$*" in' \
+        '    *bookmarks*first*)' \
+        '        echo ""' \
+        '        ;;' \
         '    *bookmarks*)' \
         '        echo "main"' \
         '        ;;' \

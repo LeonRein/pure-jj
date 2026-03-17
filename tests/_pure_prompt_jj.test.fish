@@ -4,6 +4,7 @@ source (status dirname)/../functions/_pure_prompt_jj_change_id.fish
 source (status dirname)/../functions/_pure_prompt_jj_status.fish
 source (status dirname)/../functions/_pure_prompt_jj_bookmark.fish
 source (status dirname)/../functions/_pure_prompt_jj_dirty.fish
+source (status dirname)/../functions/_pure_prompt_jj_ahead_behind.fish
 source (status dirname)/../functions/_pure_string_width.fish
 @echo (_print_filename (status filename))
 
@@ -57,6 +58,7 @@ before_each
     function _pure_prompt_jj_change_id; echo $EMPTY; end
     function _pure_prompt_jj_dirty; echo $EMPTY; end
     function _pure_prompt_jj_bookmark; echo $EMPTY; end
+    function _pure_prompt_jj_ahead_behind; echo $EMPTY; end
 
     _pure_prompt_jj
 ) $status -eq $SUCCESS
@@ -68,6 +70,8 @@ before_each
     function _pure_prompt_jj_change_id; echo "abcd"; end
     function _pure_prompt_jj_dirty; echo $EMPTY; end
     function _pure_prompt_jj_bookmark; echo $EMPTY; end
+    function _pure_prompt_jj_ahead_behind; echo $EMPTY; end
+    function _pure_prompt_jj_ahead_behind; echo $EMPTY; end
 
     set --universal pure_enable_jj true
 
@@ -81,6 +85,8 @@ before_each
     function _pure_prompt_jj_change_id; echo "abcd"; end
     function _pure_prompt_jj_dirty; echo $EMPTY; end
     function _pure_prompt_jj_bookmark; echo $EMPTY; end
+    function _pure_prompt_jj_ahead_behind; echo $EMPTY; end
+    function _pure_prompt_jj_ahead_behind; echo $EMPTY; end
 
     set --universal pure_enable_jj true
 
@@ -94,6 +100,7 @@ before_each
     function _pure_prompt_jj_change_id; echo "abcd"; end
     function _pure_prompt_jj_dirty; echo '*'; end
     function _pure_prompt_jj_bookmark; echo $EMPTY; end
+    function _pure_prompt_jj_ahead_behind; echo $EMPTY; end
 
     set --universal pure_enable_jj true
 
@@ -107,6 +114,7 @@ before_each
     function _pure_prompt_jj_change_id; echo "abcd"; end
     function _pure_prompt_jj_dirty; echo $EMPTY; end
     function _pure_prompt_jj_bookmark; echo '(main)'; end
+    function _pure_prompt_jj_ahead_behind; echo $EMPTY; end
 
     set --universal pure_enable_jj true
 
@@ -120,11 +128,26 @@ before_each
     function _pure_prompt_jj_change_id; echo "abcd"; end
     function _pure_prompt_jj_dirty; echo '*'; end
     function _pure_prompt_jj_bookmark; echo '(main)'; end
+    function _pure_prompt_jj_ahead_behind; echo '^'; end
 
     set --universal pure_enable_jj true
 
     _pure_prompt_jj
-) = '⊙ abcd* (main)'
+) = '⊙ abcd* (main) ^'
+after_each
+
+before_each
+@test "_pure_prompt_jj: shows ahead/behind indicator" (
+    function _pure_prompt_jj_status; echo $EMPTY; end
+    function _pure_prompt_jj_change_id; echo "abcd"; end
+    function _pure_prompt_jj_dirty; echo $EMPTY; end
+    function _pure_prompt_jj_bookmark; echo $EMPTY; end
+    function _pure_prompt_jj_ahead_behind; echo 'v'; end
+
+    set --universal pure_enable_jj true
+
+    _pure_prompt_jj
+) = 'abcd v'
 after_each
 
 before_each
@@ -133,6 +156,7 @@ before_each
     function _pure_prompt_jj_change_id; echo "abcd"; end
     function _pure_prompt_jj_dirty; echo $EMPTY; end
     function _pure_prompt_jj_bookmark; echo $EMPTY; end
+    function _pure_prompt_jj_ahead_behind; echo $EMPTY; end
 
     set --universal pure_enable_jj false
 
