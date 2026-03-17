@@ -99,8 +99,8 @@
 | **`pure_symbol_jj_empty`**      | `∅`     | Change is empty (no diff from parent).                   |
 | **`pure_symbol_jj_conflict`**   | `✖`     | Change has conflicts.                                    |
 | **`pure_symbol_jj_dirty`**      | `*`     | Working copy has modifications (change is not empty).    |
-| **`pure_symbol_jj_ahead`**       | `⇡`     | Changes ahead of nearest bookmark (changes to push).     |
-| **`pure_symbol_jj_behind`**      | `⇣`     | Changes behind remote bookmark (changes to pull).        |
+| **`pure_symbol_jj_ahead`**       | `⇡`     | Aggregated changes to push over displayed bookmarks.     |
+| **`pure_symbol_jj_behind`**      | `⇣`     | Aggregated changes to pull over displayed bookmarks.     |
 | **`pure_show_numbered_jj_indicator`** | `false` | Show number of changes ahead/behind next to symbol. |
 
 !!! info "jj takes precedence over git"

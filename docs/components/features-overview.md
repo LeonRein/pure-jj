@@ -37,9 +37,9 @@ Fully **customizable** (colors, symbols and features):
     * Display status flags: immutable, hidden, empty, conflict ;
     * Display change ID with native `jj` coloring ;
     * Display `*` when working copy has modifications ;
-    * Display nearest bookmark name ;
-    * Display `⇡` when ahead of bookmark (changes to push) ;
-    * Display `⇣` when behind remote bookmark (changes to pull) ;
+    * Display bookmarks from descendants of `@` (fallback: ancestor bookmarks) ;
+    * Display up to 3 bookmark names (append `...` when there are more) ;
+    * Display aggregated `⇡`/`⇣` over the displayed bookmarks ;
     * [Async update when configured with fish-async-prompt][async] ;
 
 * [Update terminal title with _current folder_ and _command_ 🛠][title] ;

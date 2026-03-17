@@ -240,3 +240,77 @@ before_each
     _pure_prompt_jj_bookmark
 ) = (set_color grey)'(main)'(set_color normal)' '(set_color cyan)'^'
 after_each
+
+before_each
+@test "_pure_prompt_jj_bookmark: falls back to ancestor bookmarks when descendant list is empty" (
+    printf '%s\n' \
+        '#!/bin/sh' \
+        'case "$*" in' \
+        '    *"-r @:: & bookmarks()"*)' \
+        '        echo ""' \
+        '        ;;' \
+        '    *"-r heads(::@ & bookmarks())"*)' \
+        '        echo "main"' \
+        '        ;;' \
+        '    *tracking_ahead_count*)' \
+        '        printf "0\n0\n"' \
+        '        ;;' \
+        'esac' > /tmp/test_pure_prompt_jj_bookmark/bin/jj
+    chmod +x /tmp/test_pure_prompt_jj_bookmark/bin/jj
+
+    set --universal pure_show_numbered_jj_indicator false
+
+    _pure_prompt_jj_bookmark
+) = '(main)'(set_color normal)
+after_each
+
+before_each
+@test "_pure_prompt_jj_bookmark: shows only first three bookmarks then ellipsis" (
+    printf '%s\n' \
+        '#!/bin/sh' \
+        'case "$*" in' \
+        '    *"-r @:: & bookmarks()"*)' \
+        '        printf "main\ndevelop\nrelease\nfeature\n"' \
+        '        ;;' \
+        '    *tracking_ahead_count*)' \
+        '        printf "0\n0\n"' \
+        '        ;;' \
+        'esac' > /tmp/test_pure_prompt_jj_bookmark/bin/jj
+    chmod +x /tmp/test_pure_prompt_jj_bookmark/bin/jj
+
+    set --universal pure_show_numbered_jj_indicator false
+
+    _pure_prompt_jj_bookmark
+) = '(main, develop, release, ...)'(set_color normal)
+after_each
+
+before_each
+@test "_pure_prompt_jj_bookmark: sums ahead and behind over first three bookmarks" (
+    printf '%s\n' \
+        '#!/bin/sh' \
+        'case "$*" in' \
+        '    *"-r @:: & bookmarks()"*)' \
+        '        printf "main\ndevelop\nrelease\nfeature\n"' \
+        '        ;;' \
+        '    *"remote_bookmarks(main)"*tracking_ahead_count*)' \
+        '        printf "1\n2\n"' \
+        '        ;;' \
+        '    *"remote_bookmarks(develop)"*tracking_ahead_count*)' \
+        '        printf "3\n4\n"' \
+        '        ;;' \
+        '    *"remote_bookmarks(release)"*tracking_ahead_count*)' \
+        '        printf "5\n6\n"' \
+        '        ;;' \
+        '    *"remote_bookmarks(feature)"*tracking_ahead_count*)' \
+        '        printf "100\n100\n"' \
+        '        ;;' \
+        'esac' > /tmp/test_pure_prompt_jj_bookmark/bin/jj
+    chmod +x /tmp/test_pure_prompt_jj_bookmark/bin/jj
+
+    set --universal pure_symbol_jj_ahead '^'
+    set --universal pure_symbol_jj_behind 'v'
+    set --universal pure_show_numbered_jj_indicator true
+
+    _pure_prompt_jj_bookmark
+) = '(main, develop, release, ...)'(set_color normal)' ^9v12'
+after_each
