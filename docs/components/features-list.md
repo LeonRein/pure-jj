@@ -89,6 +89,22 @@
     ![screenshot pure_enable_git=false](/pure/assets/screenshots/light-pure_enable_git%3Dfalse.png#only-light)
     ![screenshot pure_enable_git=false](/pure/assets/screenshots/mirage-pure_enable_git%3Dfalse.png#only-dark)
 
+### Jujutsu (jj)
+
+| Option                          | Default | Description                                              |
+| :------------------------------ | :------ | :------------------------------------------------------- |
+| **`pure_enable_jj`**            | `true`  | Show info about Jujutsu repository.                      |
+| **`pure_symbol_jj_immutable`**  | `🔒`    | Change is immutable.                                     |
+| **`pure_symbol_jj_hidden`**     | `👻`    | Change is hidden (abandoned).                            |
+| **`pure_symbol_jj_empty`**      | `∅`     | Change is empty (no diff from parent).                   |
+| **`pure_symbol_jj_conflict`**   | `💥`    | Change has conflicts.                                    |
+| **`pure_symbol_jj_dirty`**      | `*`     | Working copy has modifications (change is not empty).    |
+
+!!! info "jj takes precedence over git"
+
+    When both `jj` and `git` are available in a repository, jj is preferred.
+    The change ID uses jj's native coloring to highlight the unique prefix.
+
 ### Jobs
 
 | Option               | Default | Description                 |
