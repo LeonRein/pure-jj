@@ -41,5 +41,13 @@ function _pure_prompt_jj_bookmark \
         end
     end
 
-    echo "$jj_bookmark$jj_ahead_behind"
+    set --local result
+    if test -n "$jj_bookmark"
+        set --append result "$jj_bookmark"
+    end
+    if test -n "$jj_ahead_behind"
+        set --append result "$jj_ahead_behind"
+    end
+
+    echo $result
 end

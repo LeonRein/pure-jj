@@ -119,12 +119,12 @@ before_each
     function _pure_prompt_jj_status; echo "⊙ "; end
     function _pure_prompt_jj_change_id; echo "abcd"; end
     function _pure_prompt_jj_dirty; echo '*'; end
-    function _pure_prompt_jj_bookmark; echo '(main)^'; end
+    function _pure_prompt_jj_bookmark; echo '(main) ^'; end
 
     set --universal pure_enable_jj true
 
     _pure_prompt_jj
-) = '⊙ abcd* (main)^'
+) = '⊙ abcd* (main) ^'
 after_each
 
 before_each

@@ -53,13 +53,13 @@ We do our best to clean up after ourselves and provide information on the versio
 We support installing pure into a folder other than `__fish_config_dir`. Updates and uninstallation will work normally
 even when not installed into `__fish_config_dir`.
 
-### Slowness: try Async `git` Prompt
+### Slowness: try Async VCS Prompt
 
 !!! info
 
     Big repository can slow down the prompt rendering.
 
-In order to ensure the `git` prompt updates without lag, you can add [fish-async-prompt](https://github.com/acomagu/fish-async-prompt) using `fisher`:
+In order to ensure the VCS prompt (`git` or `jj`) updates without lag, you can add [fish-async-prompt](https://github.com/acomagu/fish-async-prompt) using `fisher`:
 
 ``` console
 fisher install acomagu/fish-async-prompt
@@ -68,5 +68,5 @@ fisher install acomagu/fish-async-prompt
 ... and put this in your `config.fish`:
 
 ``` console
-set -g async_prompt_functions _pure_prompt_git
+set -g async_prompt_functions _pure_prompt_vcs
 ```

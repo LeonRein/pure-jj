@@ -101,7 +101,7 @@ before_each
     set --universal pure_show_numbered_jj_indicator false
 
     _pure_prompt_jj_bookmark
-) = '(main)'(set_color normal)'^'
+) = '(main)'(set_color normal)' ^'
 after_each
 
 before_each
@@ -146,7 +146,7 @@ before_each
     set --universal pure_show_numbered_jj_indicator true
 
     _pure_prompt_jj_bookmark
-) = '(main)'(set_color normal)'^3'
+) = '(main)'(set_color normal)' ^3'
 after_each
 
 before_each
@@ -169,7 +169,7 @@ before_each
     set --universal pure_show_numbered_jj_indicator false
 
     _pure_prompt_jj_bookmark
-) = '(main)'(set_color normal)'v'
+) = '(main)'(set_color normal)' v'
 after_each
 
 before_each
@@ -192,7 +192,7 @@ before_each
     set --universal pure_show_numbered_jj_indicator true
 
     _pure_prompt_jj_bookmark
-) = '(main)'(set_color normal)'v2'
+) = '(main)'(set_color normal)' v2'
 after_each
 
 before_each
@@ -217,7 +217,7 @@ before_each
     set --universal pure_show_numbered_jj_indicator false
 
     _pure_prompt_jj_bookmark
-) = '(main)'(set_color normal)'^v'
+) = '(main)'(set_color normal)' ^v'
 after_each
 
 before_each
@@ -242,7 +242,7 @@ before_each
     set --universal pure_show_numbered_jj_indicator false
 
     _pure_prompt_jj_bookmark
-) = '(main)'(set_color normal)'^'
+) = '(main)'(set_color normal)' ^'
 after_each
 
 before_each
@@ -268,5 +268,5 @@ before_each
     set --universal pure_show_numbered_jj_indicator false
 
     _pure_prompt_jj_bookmark
-) = (set_color grey)'(main)'(set_color normal)(set_color cyan)'^'
+) = (set_color grey)'(main)'(set_color normal)' '(set_color cyan)'^'
 after_each
