@@ -61,6 +61,15 @@ Fully **customizable** (colors, symbols and features):
     * Display the number of stashes, ahead and behind commits (e.g. `≡3 ⇡5 ⇣2`) ;
     * [Async update when configured with fish-async-prompt][async] ;
 
+* [Display `jj` (Jujutsu) change information 🏴🛠][jj] ;
+
+    * Display status flags: immutable, hidden, empty, conflict ;
+    * Display change ID with native `jj` coloring ;
+    * Display `*` when working copy has modifications ;
+    * Display nearest bookmark name ;
+    * Display `⇡` when ahead of bookmark (changes to push) ;
+    * Display `⇣` when behind remote bookmark (changes to pull) ;
+
 * [Update terminal title with _current folder_ and _command_ 🛠][title] ;
 * [Shorten or truncate _current folder_ component 🏴🛠][current-working-directory] ;
 * and more…
@@ -123,6 +132,7 @@ Checkout our [Contribution Guide][contribution] to get familiar with our convent
 [container-detection-docker]: https://pure-fish.github.io/pure/#container-detection-docker
 [current-working-directory]: https://pure-fish.github.io/pure/#current-working-directory
 [git]: https://pure-fish.github.io/pure/#git
+[jj]: https://pure-fish.github.io/pure/#jujutsu-jj
 [jobs]: https://pure-fish.github.io/pure/#jobs
 [kubernetes]: https://pure-fish.github.io/pure/#kubernetes
 [list-exit-statuses]: https://pure-fish.github.io/pure/#list-exit-statuses

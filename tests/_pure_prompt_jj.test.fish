@@ -34,7 +34,7 @@ before_each
 @test "_pure_prompt_jj: fails when jj is missing" (
     set --universal pure_enable_jj true
     function type  # mock jj absence
-        if test "x$argv" = "x-q --no-functions jj"
+        if test "x$argv" = "x--quiet --no-functions jj"
             return $FAILURE
         end
     end

@@ -123,6 +123,25 @@ if set --query CI
         screenshot "pure_enable_git=true"
     ) $status -eq $SUCCESS
 
+    # Jujutsu (jj) enable/disable
+    before_each
+    @test "screenshot: pure_enable_jj=false" (
+        set --universal pure_enable_jj false
+
+        screenshot "pure_enable_jj=false"
+    ) $status -eq $SUCCESS
+
+    before_each
+    @test "screenshot: pure_enable_jj=true" (
+        set --universal pure_enable_jj true
+        function _pure_prompt_jj_status; echo '∅ '; end
+        function _pure_prompt_jj_change_id; echo 'kxly'; end
+        function _pure_prompt_jj_dirty; echo '*'; end
+        function _pure_prompt_jj_bookmark; echo '(main)' '⇡1'; end
+
+        screenshot "pure_enable_jj=true"
+    ) $status -eq $SUCCESS
+
     # Jobs indicator
     before_each
     @test "screenshot: pure_show_jobs=false" (

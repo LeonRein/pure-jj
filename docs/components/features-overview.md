@@ -32,6 +32,16 @@ Fully **customizable** (colors, symbols and features):
     * Display the number of stashes, ahead and behind commits (e.g. `≡3 ⇡5 ⇣2`) ;
     * [Async update when configured with fish-async-prompt][async] ;
 
+* [Display `jj` (Jujutsu) change information 🏴🛠][jj] ;
+
+    * Display status flags: immutable, hidden, empty, conflict ;
+    * Display change ID with native `jj` coloring ;
+    * Display `*` when working copy has modifications ;
+    * Display nearest bookmark name ;
+    * Display `⇡` when ahead of bookmark (changes to push) ;
+    * Display `⇣` when behind remote bookmark (changes to pull) ;
+    * [Async update when configured with fish-async-prompt][async] ;
+
 * [Update terminal title with _current folder_ and _command_ 🛠][title] ;
 * [Shorten or truncate _current folder_ component 🏴🛠][current-working-directory] ;
 * and more…
@@ -44,6 +54,7 @@ Fully **customizable** (colors, symbols and features):
 [container-detection-docker]: ./doc/#container-detection-docker
 [current-working-directory]: ./doc/#current-working-directory
 [git]: ./doc/#git
+[jj]: ./doc/#jujutsu-jj
 [jobs]: ./doc/#jobs
 [kubernetes]: ./doc/#kubernetes
 [list-exit-statuses]: ./doc/#list-exit-statuses

@@ -49,7 +49,7 @@ _pure_set_default pure_symbol_jj_ahead "⇡"
 _pure_set_default pure_symbol_jj_behind "⇣"
 _pure_set_default pure_color_jj_ahead pure_color_info
 _pure_set_default pure_color_jj_behind pure_color_info
-_pure_set_default pure_show_numbered_jj_indicator true
+_pure_set_default pure_show_numbered_jj_indicator false
 
 # Remote info (user@hostname) for SSH and containers (Docker/LXC)
 _pure_set_default pure_color_hostname pure_color_mute

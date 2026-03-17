@@ -1,13 +1,13 @@
 function _pure_prompt_jj \
     --description 'Print jj repository information: status flags, change id, dirty, and nearest bookmark'
 
-    set ABORT_FEATURE 2
+    set --local ABORT_FEATURE 2
 
     if set --query pure_enable_jj; and test "$pure_enable_jj" != true
         return 1
     end
 
-    if not type -q --no-functions jj
+    if not type --quiet --no-functions jj
         return $ABORT_FEATURE
     end
 
