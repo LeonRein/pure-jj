@@ -33,7 +33,7 @@ before_each
     printf '%s\n' \
         '#!/bin/sh' \
         'case "$*" in' \
-        '    *bookmarks*first*)' \
+        '    *bookmarks*\\n*)' \
         '        echo "main"' \
         '        ;;' \
         '    *"main..@"*)' \
@@ -56,7 +56,7 @@ before_each
     printf '%s\n' \
         '#!/bin/sh' \
         'case "$*" in' \
-        '    *bookmarks*first*)' \
+        '    *bookmarks*\\n*)' \
         '        echo "main"' \
         '        ;;' \
         '    *"main..@"*)' \
@@ -79,7 +79,7 @@ before_each
     printf '%s\n' \
         '#!/bin/sh' \
         'case "$*" in' \
-        '    *bookmarks*first*)' \
+        '    *bookmarks*\\n*)' \
         '        echo "main"' \
         '        ;;' \
         '    *"main..@"*)' \
@@ -102,7 +102,7 @@ before_each
     printf '%s\n' \
         '#!/bin/sh' \
         'case "$*" in' \
-        '    *bookmarks*first*)' \
+        '    *bookmarks*\\n*)' \
         '        echo "main"' \
         '        ;;' \
         '    *"main..@"*)' \
@@ -125,7 +125,7 @@ before_each
     printf '%s\n' \
         '#!/bin/sh' \
         'case "$*" in' \
-        '    *bookmarks*first*)' \
+        '    *bookmarks*\\n*)' \
         '        echo "main"' \
         '        ;;' \
         '    *"main..@"*)' \
@@ -150,7 +150,7 @@ before_each
     printf '%s\n' \
         '#!/bin/sh' \
         'case "$*" in' \
-        '    *bookmarks*first*)' \
+        '    *bookmarks*\\n*)' \
         '        echo "main"' \
         '        ;;' \
         '    *"main..@"*)' \
@@ -175,7 +175,7 @@ before_each
     printf '%s\n' \
         '#!/bin/sh' \
         'case "$*" in' \
-        '    *bookmarks*first*)' \
+        '    *bookmarks*\\n*)' \
         '        echo "main"' \
         '        ;;' \
         '    *"main..@"*)' \

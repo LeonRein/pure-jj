@@ -4,9 +4,10 @@ function _pure_prompt_jj_ahead_behind \
     set --local jj_ahead
     set --local jj_behind
 
-    set --local bookmark_name (command jj log --no-graph --ignore-working-copy \
+    set --local bookmark_names (command jj log --no-graph --ignore-working-copy \
         -r 'heads(::@ & bookmarks())' \
-        -T 'bookmarks.filter(|b| !b.remote()).map(|b| b.name()).first()' 2>/dev/null)
+        -T 'bookmarks.filter(|b| !b.remote()).map(|b| b.name()).join("\n")' 2>/dev/null)
+    set --local bookmark_name $bookmark_names[1]
 
     if test -n "$bookmark_name"
         # Ahead: changes in @ not yet in the bookmark (local changes to push)

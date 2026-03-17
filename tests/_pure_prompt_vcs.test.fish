@@ -26,7 +26,7 @@ function before_each
         '    exit 0' \
         'fi' \
         'case "$*" in' \
-        '    *bookmarks*first*)' \
+        '    *bookmarks*\\\\n*)' \
         '        echo ""' \
         '        ;;' \
         '    *bookmarks*)' \
