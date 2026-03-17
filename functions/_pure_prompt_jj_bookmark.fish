@@ -17,7 +17,7 @@ function _pure_prompt_jj_bookmark \
         set --local bookmark_name $bookmark_names[1]
         set --local tracking_info (command jj log --no-graph --ignore-working-copy \
             -r "latest(remote_bookmarks($bookmark_name), 1)" \
-            -T 'remote_bookmarks.first().tracking_ahead_count().lower() ++ "\n" ++ remote_bookmarks.first().tracking_behind_count().lower()' 2>/dev/null)
+            -T 'remote_bookmarks.first().tracking_behind_count().lower() ++ "\n" ++ remote_bookmarks.first().tracking_ahead_count().lower()' 2>/dev/null)
 
         set --local ahead_count "$tracking_info[1]"
         set --local behind_count "$tracking_info[2]"
